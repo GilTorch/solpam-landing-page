@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { WaitlistForm } from "@/components/waitlist-form"
 import {
   Users,
   TrendingUp,
@@ -11,7 +12,8 @@ import {
   Smartphone,
   Lock,
   BarChart3,
-  Download,
+  Mail,
+  Clock,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -22,8 +24,8 @@ export default function LandingPage() {
       {/* Header */}
       <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <Link href="/" className="flex items-center justify-center">
-          <Image src="/images/solpam-logo.png" alt="Solpam Logo" width={32} height={32} className="w-8 h-8" />
-          <span className="ml-2 text-xl font-bold text-gray-900">Solpam</span>
+          <Image src="/images/solpam-logo.png" alt="Sòlpam Logo" width={32} height={32} className="w-8 h-8" />
+          <span className="ml-2 text-xl font-bold text-gray-900 font-heading">Sòlpam</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="#features" className="text-sm font-medium hover:text-emerald-600 transition-colors">
@@ -32,8 +34,8 @@ export default function LandingPage() {
           <Link href="#how-it-works" className="text-sm font-medium hover:text-emerald-600 transition-colors">
             Comment ça marche
           </Link>
-          <Link href="#download" className="text-sm font-medium hover:text-emerald-600 transition-colors">
-            Télécharger
+          <Link href="#waitlist" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            Liste d'attente
           </Link>
           <Link href="#contact" className="text-sm font-medium hover:text-emerald-600 transition-colors">
             Contact
@@ -48,38 +50,42 @@ export default function LandingPage() {
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">
-                    Plus de 10 000 téléchargements
-                  </Badge>
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">Bientôt disponible</Badge>
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent font-heading">
                     L'app mobile pour gérer votre sòl
                   </h1>
                   <p className="max-w-[600px] text-gray-600 md:text-xl">
                     Transformez la façon dont votre groupe épargne ensemble. Suivez les contributions, gérez les
-                    rotations et renforcez la confiance financière avec Solpam - directement sur votre téléphone.
+                    rotations et renforcez la confiance financière avec Sòlpam - directement sur votre téléphone.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 min-[400px]:flex-row">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+                    asChild
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    Télécharger sur iOS
+                    <Link href="#waitlist">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Rejoindre la liste d'attente
+                    </Link>
                   </Button>
                   <Button
                     variant="outline"
                     size="lg"
                     className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 bg-transparent"
+                    asChild
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    Télécharger sur Android
+                    <Link href="#how-it-works">
+                      <Clock className="mr-2 h-4 w-4" />
+                      En savoir plus
+                    </Link>
                   </Button>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
-                    <span>Téléchargement gratuit</span>
+                    <span>Application gratuite</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
@@ -98,7 +104,7 @@ export default function LandingPage() {
                     src="/images/solpam-dashboard-screen.png"
                     width="300"
                     height="600"
-                    alt="Application mobile Solpam - Tableau de bord"
+                    alt="Application mobile Sòlpam - Tableau de bord"
                     className="relative rounded-3xl shadow-2xl"
                   />
                 </div>
@@ -112,7 +118,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Qu'est-ce qu'un sòl ?</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">Qu'est-ce qu'un sòl ?</h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Un sòl est un système d'épargne collective où les membres contribuent régulièrement un montant fixe,
                   et chaque membre reçoit à tour de rôle la totalité de la cagnotte pour réaliser ses projets.
@@ -123,7 +129,7 @@ export default function LandingPage() {
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <Users className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Formation du groupe</CardTitle>
+                  <CardTitle className="font-heading">Formation du groupe</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
@@ -135,7 +141,7 @@ export default function LandingPage() {
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <Calendar className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Contributions régulières</CardTitle>
+                  <CardTitle className="font-heading">Contributions régulières</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
@@ -146,7 +152,7 @@ export default function LandingPage() {
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <TrendingUp className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Versements rotatifs</CardTitle>
+                  <CardTitle className="font-heading">Versements rotatifs</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
@@ -164,7 +170,7 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Une app mobile complète pour votre sòl
                 </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -181,7 +187,7 @@ export default function LandingPage() {
                       <Smartphone className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Interface mobile intuitive</h3>
+                      <h3 className="text-xl font-bold font-heading">Interface mobile intuitive</h3>
                       <p className="text-gray-600">
                         Gérez votre sòl facilement avec une interface conçue spécialement pour mobile, simple et rapide
                         à utiliser.
@@ -193,7 +199,7 @@ export default function LandingPage() {
                       <Bell className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Notifications push</h3>
+                      <h3 className="text-xl font-bold font-heading">Notifications push</h3>
                       <p className="text-gray-600">
                         Recevez des notifications directement sur votre téléphone pour les échéances, versements et
                         mises à jour importantes.
@@ -205,7 +211,7 @@ export default function LandingPage() {
                       <BarChart3 className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Suivi en temps réel</h3>
+                      <h3 className="text-xl font-bold font-heading">Suivi en temps réel</h3>
                       <p className="text-gray-600">
                         Consultez l'état de votre sòl, les contributions et les prochains versements en temps réel, même
                         hors ligne.
@@ -217,7 +223,7 @@ export default function LandingPage() {
                       <Lock className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Sécurité mobile avancée</h3>
+                      <h3 className="text-xl font-bold font-heading">Sécurité mobile avancée</h3>
                       <p className="text-gray-600">
                         Protection par code PIN, empreinte digitale et chiffrement des données pour une sécurité
                         maximale.
@@ -232,14 +238,14 @@ export default function LandingPage() {
                     src="/images/solpam-login-screen.png"
                     width="200"
                     height="400"
-                    alt="Écran de connexion Solpam"
+                    alt="Écran de connexion Sòlpam"
                     className="rounded-2xl shadow-xl"
                   />
                   <Image
                     src="/images/solpam-dashboard-screen.png"
                     width="200"
                     height="400"
-                    alt="Tableau de bord principal Solpam"
+                    alt="Tableau de bord principal Sòlpam"
                     className="rounded-2xl shadow-xl mt-8"
                   />
                 </div>
@@ -253,7 +259,9 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Comment utiliser Solpam</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
+                  Comment utiliser Sòlpam
+                </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Téléchargez l'app et commencez à gérer votre sòl en quelques minutes.
                 </p>
@@ -264,14 +272,14 @@ export default function LandingPage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Téléchargez l'app</h3>
-                <p className="text-gray-600">Téléchargez Solpam gratuitement sur l'App Store ou Google Play Store.</p>
+                <h3 className="text-xl font-bold font-heading">Téléchargez l'app</h3>
+                <p className="text-gray-600">Téléchargez Sòlpam gratuitement sur l'App Store ou Google Play Store.</p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   2
                 </div>
-                <h3 className="text-xl font-bold">Créez votre sòl</h3>
+                <h3 className="text-xl font-bold font-heading">Créez votre sòl</h3>
                 <p className="text-gray-600">
                   Configurez votre groupe avec les détails, montants et calendrier de rotation.
                 </p>
@@ -280,7 +288,7 @@ export default function LandingPage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Invitez vos proches</h3>
+                <h3 className="text-xl font-bold font-heading">Invitez vos proches</h3>
                 <p className="text-gray-600">
                   Partagez un code d'invitation pour que vos amis et famille rejoignent votre sòl.
                 </p>
@@ -289,7 +297,7 @@ export default function LandingPage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   4
                 </div>
-                <h3 className="text-xl font-bold">Gérez ensemble</h3>
+                <h3 className="text-xl font-bold font-heading">Gérez ensemble</h3>
                 <p className="text-gray-600">
                   Suivez les contributions, recevez des notifications et gérez les versements facilement.
                 </p>
@@ -298,16 +306,64 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Waitlist Section */}
+        <section id="waitlist" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-8 text-center">
+              <div className="space-y-4">
+                <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">
+                  Lancement prévu pour 2024
+                </Badge>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
+                  Rejoignez la liste d'attente
+                </h2>
+                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Soyez parmi les premiers à découvrir Sòlpam. Inscrivez-vous pour recevoir une notification dès que
+                  l'application sera disponible.
+                </p>
+              </div>
+
+              <div className="w-full max-w-md">
+                <WaitlistForm />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mt-12">
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100">
+                    <Bell className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <h3 className="font-semibold font-heading">Notification prioritaire</h3>
+                  <p className="text-sm text-gray-600">Recevez un email dès que l'app est disponible</p>
+                </div>
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100">
+                    <Star className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <h3 className="font-semibold font-heading">Accès anticipé</h3>
+                  <p className="text-sm text-gray-600">Testez les nouvelles fonctionnalités en avant-première</p>
+                </div>
+                <div className="flex flex-col items-center text-center space-y-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100">
+                    <CheckCircle className="h-6 w-6 text-emerald-600" />
+                  </div>
+                  <h3 className="font-semibold font-heading">100% gratuit</h3>
+                  <p className="text-sm text-gray-600">Aucun frais, aucun engagement, désinscription facile</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Testimonials Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Aimé par des utilisateurs du monde entier
                 </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Découvrez pourquoi Solpam est l'app mobile préférée pour gérer les sòl.
+                  Découvrez pourquoi Sòlpam est l'app mobile préférée pour gérer les sòl.
                 </p>
               </div>
             </div>
@@ -324,7 +380,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    "L'app Solpam est parfaite ! Je peux gérer notre sòl familial directement depuis mon téléphone.
+                    "L'app Sòlpam est parfaite ! Je peux gérer notre sòl familial directement depuis mon téléphone.
                     Super pratique !"
                   </p>
                   <div className="flex items-center gap-2">
@@ -394,15 +450,16 @@ export default function LandingPage() {
         </section>
 
         {/* Download CTA Section */}
-        <section id="download" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
-                  Téléchargez Solpam maintenant
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white font-heading">
+                  Bientôt sur vos téléphones
                 </h2>
                 <p className="max-w-[600px] text-emerald-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Rejoignez des milliers d'utilisateurs qui gèrent déjà leur sòl avec Solpam.
+                  Sòlpam sera bientôt disponible sur iOS et Android. Rejoignez la liste d'attente pour être notifié du
+                  lancement.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -410,20 +467,17 @@ export default function LandingPage() {
                   size="lg"
                   variant="secondary"
                   className="bg-white text-emerald-600 hover:bg-emerald-50 min-w-[200px]"
+                  asChild
                 >
-                  <Download className="mr-2 h-5 w-5" />
-                  App Store
-                </Button>
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="bg-white text-emerald-600 hover:bg-emerald-50 min-w-[200px]"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Google Play
+                  <Link href="#waitlist">
+                    <Mail className="mr-2 h-5 w-5" />
+                    Rejoindre la liste d'attente
+                  </Link>
                 </Button>
               </div>
-              <p className="text-xs text-emerald-100 pt-2">Téléchargement gratuit • Compatible iOS 12+ et Android 8+</p>
+              <p className="text-xs text-emerald-100 pt-2">
+                Lancement prévu pour 2024 • Compatible iOS 12+ et Android 8+
+              </p>
             </div>
           </div>
         </section>
@@ -431,7 +485,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-white">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Solpam. Tous droits réservés.</p>
+        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Sòlpam. Tous droits réservés.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link
             href="/privacy"
