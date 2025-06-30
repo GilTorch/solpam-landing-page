@@ -95,10 +95,10 @@ export default function LandingPage() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-3xl blur-3xl opacity-20"></div>
                   <Image
-                    src="/placeholder.svg?height=600&width=300"
+                    src="/images/solpam-dashboard-screen.png"
                     width="300"
                     height="600"
-                    alt="Application mobile Solpam"
+                    alt="Application mobile Solpam - Tableau de bord"
                     className="relative rounded-3xl shadow-2xl"
                   />
                 </div>
@@ -229,17 +229,17 @@ export default function LandingPage() {
               <div className="flex items-center justify-center">
                 <div className="grid grid-cols-2 gap-4">
                   <Image
-                    src="/placeholder.svg?height=400&width=200"
+                    src="/images/solpam-login-screen.png"
                     width="200"
                     height="400"
-                    alt="Écran principal de l'app"
+                    alt="Écran de connexion Solpam"
                     className="rounded-2xl shadow-xl"
                   />
                   <Image
-                    src="/placeholder.svg?height=400&width=200"
+                    src="/images/solpam-dashboard-screen.png"
                     width="200"
                     height="400"
-                    alt="Écran de gestion du sòl"
+                    alt="Tableau de bord principal Solpam"
                     className="rounded-2xl shadow-xl mt-8"
                   />
                 </div>
