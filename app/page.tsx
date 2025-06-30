@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -7,13 +6,12 @@ import {
   TrendingUp,
   Calendar,
   Bell,
-  CreditCard,
   CheckCircle,
   Star,
-  ArrowRight,
   Smartphone,
   Lock,
   BarChart3,
+  Download,
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -24,20 +22,18 @@ export default function LandingPage() {
       {/* Header */}
       <header className="px-4 lg:px-6 h-16 flex items-center border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <Link href="/" className="flex items-center justify-center">
-          <div className="w-8 h-8 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
-            <CreditCard className="h-5 w-5 text-white" />
-          </div>
-          <span className="ml-2 text-xl font-bold text-gray-900">ROSCAFlow</span>
+          <Image src="/images/solpam-logo.png" alt="Solpam Logo" width={32} height={32} className="w-8 h-8" />
+          <span className="ml-2 text-xl font-bold text-gray-900">Solpam</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="#features" className="text-sm font-medium hover:text-emerald-600 transition-colors">
-            Features
+            Fonctionnalités
           </Link>
           <Link href="#how-it-works" className="text-sm font-medium hover:text-emerald-600 transition-colors">
-            How It Works
+            Comment ça marche
           </Link>
-          <Link href="#pricing" className="text-sm font-medium hover:text-emerald-600 transition-colors">
-            Pricing
+          <Link href="#download" className="text-sm font-medium hover:text-emerald-600 transition-colors">
+            Télécharger
           </Link>
           <Link href="#contact" className="text-sm font-medium hover:text-emerald-600 transition-colors">
             Contact
@@ -53,44 +49,45 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">
-                    Trusted by 10,000+ Groups
+                    Plus de 10 000 téléchargements
                   </Badge>
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                    Simplify Your ROSCA Management
+                    L'app mobile pour gérer votre sòl
                   </h1>
                   <p className="max-w-[600px] text-gray-600 md:text-xl">
-                    Transform how your group saves together. Track contributions, manage rotations, and build financial
-                    trust with our comprehensive ROSCA management platform.
+                    Transformez la façon dont votre groupe épargne ensemble. Suivez les contributions, gérez les
+                    rotations et renforcez la confiance financière avec Solpam - directement sur votre téléphone.
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <div className="flex flex-col gap-3 min-[400px]:flex-row">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
                   >
-                    Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <Download className="mr-2 h-4 w-4" />
+                    Télécharger sur iOS
                   </Button>
                   <Button
                     variant="outline"
                     size="lg"
                     className="border-emerald-200 text-emerald-700 hover:bg-emerald-50 bg-transparent"
                   >
-                    Watch Demo
+                    <Download className="mr-2 h-4 w-4" />
+                    Télécharger sur Android
                   </Button>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
-                    <span>No setup fees</span>
+                    <span>Téléchargement gratuit</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
-                    <span>14-day free trial</span>
+                    <span>Fonctionne hors ligne</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
-                    <span>Cancel anytime</span>
+                    <span>Sécurisé et privé</span>
                   </div>
                 </div>
               </div>
@@ -98,10 +95,10 @@ export default function LandingPage() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-3xl blur-3xl opacity-20"></div>
                   <Image
-                    src="/placeholder.svg?height=600&width=400"
-                    width="400"
+                    src="/placeholder.svg?height=600&width=300"
+                    width="300"
                     height="600"
-                    alt="ROSCAFlow App Interface"
+                    alt="Application mobile Solpam"
                     className="relative rounded-3xl shadow-2xl"
                   />
                 </div>
@@ -110,15 +107,15 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* What is ROSCA Section */}
+        {/* What is Sòl Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">What is a ROSCA?</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Qu'est-ce qu'un sòl ?</h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  A Rotating Savings and Credit Association (ROSCA) is a group financial arrangement where members
-                  contribute a fixed amount regularly, and each member takes turns receiving the total pot.
+                  Un sòl est un système d'épargne collective où les membres contribuent régulièrement un montant fixe,
+                  et chaque membre reçoit à tour de rôle la totalité de la cagnotte pour réaliser ses projets.
                 </p>
               </div>
             </div>
@@ -126,34 +123,35 @@ export default function LandingPage() {
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <Users className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Group Formation</CardTitle>
+                  <CardTitle>Formation du groupe</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
-                    Friends, family, or colleagues form a trusted group and agree on contribution amounts and rotation
-                    schedule.
+                    Amis, famille ou collègues forment un groupe de confiance et s'accordent sur les montants de
+                    contribution et le calendrier de rotation.
                   </p>
                 </CardContent>
               </Card>
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <Calendar className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Regular Contributions</CardTitle>
+                  <CardTitle>Contributions régulières</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
-                    Each member contributes the same amount at regular intervals (weekly, monthly, etc.).
+                    Chaque membre contribue le même montant à intervalles réguliers (hebdomadaire, mensuel, etc.).
                   </p>
                 </CardContent>
               </Card>
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <TrendingUp className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
-                  <CardTitle>Rotating Payouts</CardTitle>
+                  <CardTitle>Versements rotatifs</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-center">
-                    Members take turns receiving the total collected amount, helping achieve financial goals faster.
+                    Les membres reçoivent à tour de rôle le montant total collecté, aidant à atteindre les objectifs
+                    financiers plus rapidement.
                   </p>
                 </CardContent>
               </Card>
@@ -166,9 +164,12 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Powerful Features for Your ROSCA</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Une app mobile complète pour votre sòl
+                </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Everything you need to manage your rotating savings group efficiently and transparently.
+                  Tout ce dont vous avez besoin pour gérer votre groupe d'épargne collective, directement dans votre
+                  poche.
                 </p>
               </div>
             </div>
@@ -180,9 +181,10 @@ export default function LandingPage() {
                       <Smartphone className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Mobile-First Design</h3>
+                      <h3 className="text-xl font-bold">Interface mobile intuitive</h3>
                       <p className="text-gray-600">
-                        Access your ROSCA anytime, anywhere with our intuitive mobile app and responsive web platform.
+                        Gérez votre sòl facilement avec une interface conçue spécialement pour mobile, simple et rapide
+                        à utiliser.
                       </p>
                     </div>
                   </div>
@@ -191,9 +193,10 @@ export default function LandingPage() {
                       <Bell className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Smart Notifications</h3>
+                      <h3 className="text-xl font-bold">Notifications push</h3>
                       <p className="text-gray-600">
-                        Never miss a contribution deadline with automated reminders and real-time updates.
+                        Recevez des notifications directement sur votre téléphone pour les échéances, versements et
+                        mises à jour importantes.
                       </p>
                     </div>
                   </div>
@@ -202,10 +205,10 @@ export default function LandingPage() {
                       <BarChart3 className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Detailed Analytics</h3>
+                      <h3 className="text-xl font-bold">Suivi en temps réel</h3>
                       <p className="text-gray-600">
-                        Track group performance, contribution history, and financial insights with comprehensive
-                        reports.
+                        Consultez l'état de votre sòl, les contributions et les prochains versements en temps réel, même
+                        hors ligne.
                       </p>
                     </div>
                   </div>
@@ -214,22 +217,32 @@ export default function LandingPage() {
                       <Lock className="h-6 w-6 text-emerald-600" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">Bank-Level Security</h3>
+                      <h3 className="text-xl font-bold">Sécurité mobile avancée</h3>
                       <p className="text-gray-600">
-                        Your financial data is protected with enterprise-grade encryption and security measures.
+                        Protection par code PIN, empreinte digitale et chiffrement des données pour une sécurité
+                        maximale.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <Image
-                  src="/placeholder.svg?height=500&width=400"
-                  width="400"
-                  height="500"
-                  alt="App Features"
-                  className="rounded-xl shadow-xl"
-                />
+                <div className="grid grid-cols-2 gap-4">
+                  <Image
+                    src="/placeholder.svg?height=400&width=200"
+                    width="200"
+                    height="400"
+                    alt="Écran principal de l'app"
+                    className="rounded-2xl shadow-xl"
+                  />
+                  <Image
+                    src="/placeholder.svg?height=400&width=200"
+                    width="200"
+                    height="400"
+                    alt="Écran de gestion du sòl"
+                    className="rounded-2xl shadow-xl mt-8"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -240,9 +253,9 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">How ROSCAFlow Works</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Comment utiliser Solpam</h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Get started in minutes and transform your group savings experience.
+                  Téléchargez l'app et commencez à gérer votre sòl en quelques minutes.
                 </p>
               </div>
             </div>
@@ -251,36 +264,34 @@ export default function LandingPage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Create Your Group</h3>
-                <p className="text-gray-600">
-                  Set up your ROSCA with group details, contribution amounts, and rotation schedule.
-                </p>
+                <h3 className="text-xl font-bold">Téléchargez l'app</h3>
+                <p className="text-gray-600">Téléchargez Solpam gratuitement sur l'App Store ou Google Play Store.</p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   2
                 </div>
-                <h3 className="text-xl font-bold">Invite Members</h3>
+                <h3 className="text-xl font-bold">Créez votre sòl</h3>
                 <p className="text-gray-600">
-                  Send invitations to trusted friends, family, or colleagues to join your group.
+                  Configurez votre groupe avec les détails, montants et calendrier de rotation.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Track Contributions</h3>
+                <h3 className="text-xl font-bold">Invitez vos proches</h3>
                 <p className="text-gray-600">
-                  Monitor payments, send reminders, and maintain transparent records for all members.
+                  Partagez un code d'invitation pour que vos amis et famille rejoignent votre sòl.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   4
                 </div>
-                <h3 className="text-xl font-bold">Manage Payouts</h3>
+                <h3 className="text-xl font-bold">Gérez ensemble</h3>
                 <p className="text-gray-600">
-                  Automate rotation schedules and ensure fair, timely distribution of funds.
+                  Suivez les contributions, recevez des notifications et gérez les versements facilement.
                 </p>
               </div>
             </div>
@@ -292,9 +303,11 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Trusted by Communities Worldwide</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Aimé par des utilisateurs du monde entier
+                </h2>
                 <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  See how ROSCAFlow is helping groups achieve their financial goals together.
+                  Découvrez pourquoi Solpam est l'app mobile préférée pour gérer les sòl.
                 </p>
               </div>
             </div>
@@ -311,16 +324,16 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    "ROSCAFlow made managing our family savings group so much easier. The transparency and automation
-                    features are game-changers!"
+                    "L'app Solpam est parfaite ! Je peux gérer notre sòl familial directement depuis mon téléphone.
+                    Super pratique !"
                   </p>
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
                       <span className="text-sm font-semibold text-emerald-600">MJ</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">Maria Johnson</p>
-                      <p className="text-xs text-gray-500">Group Organizer</p>
+                      <p className="font-semibold text-sm">Marie Joseph</p>
+                      <p className="text-xs text-gray-500">Organisatrice de sòl</p>
                     </div>
                   </div>
                 </CardContent>
@@ -337,16 +350,16 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    "The mobile app is perfect for our busy schedules. Everyone stays updated and contributions are
-                    never missed."
+                    "Les notifications me rappellent toujours les échéances. Plus jamais d'oubli ! L'app est très bien
+                    faite."
                   </p>
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-semibold text-emerald-600">DL</span>
+                      <span className="text-sm font-semibold text-emerald-600">PL</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">David Lee</p>
-                      <p className="text-xs text-gray-500">Small Business Owner</p>
+                      <p className="font-semibold text-sm">Pierre Louis</p>
+                      <p className="text-xs text-gray-500">Propriétaire de petite entreprise</p>
                     </div>
                   </div>
                 </CardContent>
@@ -363,16 +376,15 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    "We've been using ROSCAFlow for 6 months. The analytics help us make better financial decisions as a
-                    group."
+                    "Interface simple et claire. Même ma grand-mère arrive à utiliser l'app pour suivre notre sòl !"
                   </p>
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <span className="text-sm font-semibold text-emerald-600">SP</span>
+                      <span className="text-sm font-semibold text-emerald-600">SD</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-sm">Sarah Patel</p>
-                      <p className="text-xs text-gray-500">Community Leader</p>
+                      <p className="font-semibold text-sm">Sophia Désir</p>
+                      <p className="text-xs text-gray-500">Leader communautaire</p>
                     </div>
                   </div>
                 </CardContent>
@@ -381,36 +393,37 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
+        {/* Download CTA Section */}
+        <section id="download" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">
-                  Ready to Transform Your Group Savings?
+                  Téléchargez Solpam maintenant
                 </h2>
                 <p className="max-w-[600px] text-emerald-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of groups already using ROSCAFlow to achieve their financial goals together.
+                  Rejoignez des milliers d'utilisateurs qui gèrent déjà leur sòl avec Solpam.
                 </p>
               </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex gap-2">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="max-w-lg flex-1 bg-white/10 border-white/20 text-white placeholder:text-emerald-100"
-                  />
-                  <Button type="submit" variant="secondary" className="bg-white text-emerald-600 hover:bg-emerald-50">
-                    Get Started
-                  </Button>
-                </form>
-                <p className="text-xs text-emerald-100">
-                  Start your 14-day free trial. No credit card required.{" "}
-                  <Link href="/terms" className="underline underline-offset-2 hover:text-white">
-                    Terms & Conditions
-                  </Link>
-                </p>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 min-w-[200px]"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  App Store
+                </Button>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 min-w-[200px]"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Google Play
+                </Button>
               </div>
+              <p className="text-xs text-emerald-100 pt-2">Téléchargement gratuit • Compatible iOS 12+ et Android 8+</p>
             </div>
           </div>
         </section>
@@ -418,16 +431,16 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-white">
-        <p className="text-xs text-gray-500">© {new Date().getFullYear()} ROSCAFlow. All rights reserved.</p>
+        <p className="text-xs text-gray-500">© {new Date().getFullYear()} Solpam. Tous droits réservés.</p>
         <nav className="sm:ml-auto flex gap-4 sm:gap-6">
           <Link
             href="/privacy"
             className="text-xs hover:underline underline-offset-4 text-gray-500 hover:text-gray-900"
           >
-            Privacy Policy
+            Politique de confidentialité
           </Link>
           <Link href="/terms" className="text-xs hover:underline underline-offset-4 text-gray-500 hover:text-gray-900">
-            Terms of Service
+            Conditions d'utilisation
           </Link>
           <Link
             href="/support"
