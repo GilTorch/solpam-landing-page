@@ -1,6 +1,4 @@
-import { initializeApp, getApps } from "firebase/app"
-import { getFirestore } from "firebase/firestore"
-
+// Firebase configuration and lazy initialization
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -11,22 +9,83 @@ const firebaseConfig = {
 }
 
 // Check if we're in a preview/demo environment
-const isPreviewMode =
-  !process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "demo-key"
+export const isPreviewMode =
+  !process.env.NEXT_PUBLIC_FIREBASE_API_KEY ||
+  process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "demo-key" ||
+  process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "" ||
+  typeof window === "undefined" // Server-side rendering check
 
-let app: any = null
-let db: any = null
+let firebaseApp: any = null
+let firestoreDb: any = null
+let initializationAttempted = false
 
-if (!isPreviewMode) {
+// Lazy initialization function
+export async function initializeFirebase() {
+  // Return early if we're in preview mode or on server
+  if (isPreviewMode || typeof window === "undefined") {
+    console.log("Skipping Firebase initialization - preview mode or server-side")
+    return { app: null, db: null }
+  }
+
+  // Return existing instances if already initialized
+  if (initializationAttempted && firebaseApp && firestoreDb) {
+    return { app: firebaseApp, db: firestoreDb }
+  }
+
+  // Mark that we've attempted initialization
+  initializationAttempted = true
+
   try {
-    // Initialize Firebase only if it hasn't been initialized yet and we have valid config
-    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
-    db = getFirestore(app)
+    // Validate required config
+    const requiredFields = ["apiKey", "projectId", "authDomain", "appId"]
+    const missingFields = requiredFields.filter((field) => !firebaseConfig[field as keyof typeof firebaseConfig])
+
+    if (missingFields.length > 0) {
+      console.warn("Missing Firebase config fields:", missingFields)
+      throw new Error(`Missing Firebase configuration: ${missingFields.join(", ")}`)
+    }
+
+    console.log("Initializing Firebase...")
+
+    // Dynamic imports to avoid SSR issues
+    const { initializeApp, getApps, getApp } = await import("firebase/app")
+    const { getFirestore, connectFirestoreEmulator } = await import("firebase/firestore")
+
+    // Initialize Firebase app
+    if (getApps().length === 0) {
+      firebaseApp = initializeApp(firebaseConfig)
+      console.log("Firebase app initialized")
+    } else {
+      firebaseApp = getApp()
+      console.log("Using existing Firebase app")
+    }
+
+    // Initialize Firestore
+    if (firebaseApp) {
+      firestoreDb = getFirestore(firebaseApp)
+      console.log("Firestore initialized successfully")
+    }
+
+    return { app: firebaseApp, db: firestoreDb }
   } catch (error) {
-    console.warn("Firebase initialization failed:", error)
-    app = null
-    db = null
+    console.error("Firebase initialization failed:", error)
+    firebaseApp = null
+    firestoreDb = null
+    return { app: null, db: null }
   }
 }
 
-export { db, app as default, isPreviewMode }
+// Export getter functions instead of direct instances
+export async function getFirebaseApp() {
+  const { app } = await initializeFirebase()
+  return app
+}
+
+export async function getFirestoreDb() {
+  const { db } = await initializeFirebase()
+  return db
+}
+
+// Legacy exports for backward compatibility
+export const db = null // Will be replaced by getFirestoreDb()
+export default null // Will be replaced by getFirebaseApp()
