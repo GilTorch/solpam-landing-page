@@ -6,7 +6,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { WaitlistForm } from "@/components/waitlist-form"
-import { Users, TrendingUp, Calendar, Bell, CheckCircle, Star, Smartphone, Lock, BarChart3, Mail, Clock, Menu, X } from 'lucide-react'
+import {
+  Users,
+  TrendingUp,
+  Calendar,
+  Bell,
+  CheckCircle,
+  Star,
+  Smartphone,
+  Lock,
+  BarChart3,
+  Mail,
+  Clock,
+  Menu,
+} from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -17,7 +30,7 @@ export default function LandingPage() {
     { href: "#features", label: "Fonctionnalités" },
     { href: "#how-it-works", label: "Comment ça marche" },
     { href: "#waitlist", label: "Liste d'attente" },
-    { href: "#contact", label: "Contact" },
+    { href: "mailto:contact@solpam.com", label: "Contact" },
   ]
 
   const handleLinkClick = () => {
@@ -32,7 +45,7 @@ export default function LandingPage() {
           <Image src="/images/solpam-logo.png" alt="Sòlpam Logo" width={32} height={32} className="w-8 h-8" />
           <span className="ml-2 text-xl font-bold text-gray-900 font-heading">Sòlpam</span>
         </Link>
-        
+
         {/* Desktop Navigation */}
         <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
           {navigationLinks.map((link) => (
@@ -218,7 +231,10 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <section
+          id="features"
+          className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-br from-emerald-50 to-teal-50"
+        >
           <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-4 max-w-4xl">
@@ -361,7 +377,10 @@ export default function LandingPage() {
         </section>
 
         {/* Waitlist Section */}
-        <section id="waitlist" className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <section
+          id="waitlist"
+          className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-br from-emerald-50 to-teal-50"
+        >
           <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="flex flex-col items-center justify-center space-y-6 md:space-y-8 text-center">
               <div className="space-y-4 max-w-3xl">
@@ -394,14 +413,18 @@ export default function LandingPage() {
                     <Star className="h-6 w-6 text-emerald-600" />
                   </div>
                   <h3 className="font-semibold font-heading text-sm md:text-base">Accès anticipé</h3>
-                  <p className="text-xs md:text-sm text-gray-600">Testez les nouvelles fonctionnalités en avant-première</p>
+                  <p className="text-xs md:text-sm text-gray-600">
+                    Testez les nouvelles fonctionnalités en avant-première
+                  </p>
                 </div>
                 <div className="flex flex-col items-center text-center space-y-2">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100">
                     <CheckCircle className="h-6 w-6 text-emerald-600" />
                   </div>
                   <h3 className="font-semibold font-heading text-sm md:text-base">100% gratuit</h3>
-                  <p className="text-xs md:text-sm text-gray-600">Aucun frais, aucun engagement, désinscription facile</p>
+                  <p className="text-xs md:text-sm text-gray-600">
+                    Aucun frais, aucun engagement, désinscription facile
+                  </p>
                 </div>
               </div>
             </div>
@@ -551,10 +574,10 @@ export default function LandingPage() {
             Conditions d'utilisation
           </Link>
           <Link
-            href="/support"
+            href="mailto:contact@solpam.com"
             className="text-xs hover:underline underline-offset-4 text-gray-500 hover:text-gray-900"
           >
-            Support
+            Contact
           </Link>
         </nav>
       </footer>
