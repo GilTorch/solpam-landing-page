@@ -30,7 +30,7 @@ export default function LandingPage() {
     { href: "#features", label: "Fonctionnalités" },
     { href: "#how-it-works", label: "Comment ça marche" },
     { href: "#waitlist", label: "Liste d'attente" },
-    { href: "mailto:contact@solpam.com", label: "Contact" },
+    { href: "https://www.facebook.com/profile.php?id=61568610369603", label: "Contact" },
   ]
 
   const handleLinkClick = () => {
@@ -48,15 +48,27 @@ export default function LandingPage() {
 
         {/* Desktop Navigation */}
         <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
-          {navigationLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium hover:text-emerald-600 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navigationLinks.map(({ href, label }) =>
+            href.startsWith("mailto:") || href.startsWith("http") ? (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
+                {label}
+              </a>
+            ) : (
+              <Link
+                key={href}
+                href={href}
+                className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
+              >
+                {label}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Mobile Navigation */}
