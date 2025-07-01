@@ -46,11 +46,13 @@ export default function LandingPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">Bientôt disponible</Badge>
+                  <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100 w-fit">
+                    Bientôt disponible
+                  </Badge>
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent font-heading">
                     L'app mobile pour gérer votre sòl
                   </h1>
@@ -97,7 +99,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center lg:justify-end">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-3xl blur-3xl opacity-20"></div>
                   <Image
@@ -115,17 +117,17 @@ export default function LandingPage() {
 
         {/* What is Sòl Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              <div className="space-y-2 max-w-4xl">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">Qu'est-ce qu'un sòl ?</h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Un sòl est un système d'épargne collective où les membres contribuent régulièrement un montant fixe,
                   et chaque membre reçoit à tour de rôle la totalité de la cagnotte pour réaliser ses projets.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
+            <div className="mx-auto grid max-w-6xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
               <Card className="border-emerald-100">
                 <CardHeader className="text-center">
                   <Users className="h-12 w-12 text-emerald-600 mx-auto mb-4" />
@@ -167,19 +169,19 @@ export default function LandingPage() {
 
         {/* Features Section */}
         <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              <div className="space-y-2 max-w-4xl">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Une app mobile complète pour votre sòl
                 </h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Tout ce dont vous avez besoin pour gérer votre groupe d'épargne collective, directement dans votre
                   poche.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
+            <div className="mx-auto grid max-w-6xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-8">
                 <div className="grid gap-6">
                   <div className="flex items-start gap-4">
@@ -256,18 +258,18 @@ export default function LandingPage() {
 
         {/* How It Works Section */}
         <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              <div className="space-y-2 max-w-4xl">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Comment utiliser Sòlpam
                 </h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Téléchargez l'app et commencez à gérer votre sòl en quelques minutes.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-8 py-12 lg:grid-cols-4">
+            <div className="mx-auto grid max-w-6xl items-center gap-8 py-12 lg:grid-cols-4">
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-2xl font-bold text-emerald-600">
                   1
@@ -308,26 +310,26 @@ export default function LandingPage() {
 
         {/* Waitlist Section */}
         <section id="waitlist" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-emerald-50 to-teal-50">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <div className="space-y-4">
-                <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100">
+              <div className="space-y-4 max-w-3xl">
+                <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100 mx-auto w-fit">
                   Lancement prévu pour 2024
                 </Badge>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Rejoignez la liste d'attente
                 </h2>
-                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Soyez parmi les premiers à découvrir Sòlpam. Inscrivez-vous pour recevoir une notification dès que
                   l'application sera disponible.
                 </p>
               </div>
 
-              <div className="w-full max-w-md">
+              <div className="w-full max-w-md mx-auto">
                 <WaitlistForm />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mt-12 w-full">
                 <div className="flex flex-col items-center text-center space-y-2">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100">
                     <Bell className="h-6 w-6 text-emerald-600" />
@@ -356,18 +358,18 @@ export default function LandingPage() {
 
         {/* Testimonials Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              <div className="space-y-2 max-w-4xl">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-heading">
                   Aimé par des utilisateurs du monde entier
                 </h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Découvrez pourquoi Sòlpam est l'app mobile préférée pour gérer les sòl.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-8">
+            <div className="mx-auto grid max-w-6xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-8">
               <Card className="border-emerald-100">
                 <CardHeader>
                   <div className="flex items-center gap-2">
@@ -451,13 +453,13 @@ export default function LandingPage() {
 
         {/* Download CTA Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-4xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
+              <div className="space-y-2 max-w-3xl">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white font-heading">
                   Bientôt sur vos téléphones
                 </h2>
-                <p className="max-w-[600px] text-emerald-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-emerald-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Sòlpam sera bientôt disponible sur iOS et Android. Rejoignez la liste d'attente pour être notifié du
                   lancement.
                 </p>
