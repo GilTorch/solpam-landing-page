@@ -444,7 +444,7 @@ export default function LandingPage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-white">
+        {/* <section className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-white">
           <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-4 max-w-4xl">
@@ -536,7 +536,7 @@ export default function LandingPage() {
               </Card>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Download CTA Section */}
         <section className="w-full py-8 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-r from-emerald-600 to-teal-600">
