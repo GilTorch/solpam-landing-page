@@ -162,10 +162,10 @@ export default function LandingPage() {
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
                     <span>Application gratuite</span>
                   </div>
-                  <div className="flex items-center gap-1">
+                  {/* <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
                     <span>Fonctionne hors ligne</span>
-                  </div>
+                  </div> */}
                   <div className="flex items-center gap-1">
                     <CheckCircle className="h-4 w-4 text-emerald-600" />
                     <span>Sécurisé et privé</span>
