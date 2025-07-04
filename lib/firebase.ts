@@ -6,14 +6,18 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL
 }
 
 // Check if we're in a preview/demo environment
 export const isPreviewMode =
   !process.env.NEXT_PUBLIC_FIREBASE_API_KEY ||
   process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "demo-key" ||
-  process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "" ||
-  typeof window === "undefined" // Server-side rendering check
+  process.env.NEXT_PUBLIC_FIREBASE_API_KEY === ""
+
+console.log("FIREBASE CONFIG", firebaseConfig);
+
+console.log("IS PREVIEW MODE ", isPreviewMode);
 
 let firebaseApp: any = null
 let firestoreDb: any = null
@@ -22,7 +26,7 @@ let initializationAttempted = false
 // Lazy initialization function
 export async function initializeFirebase() {
   // Return early if we're in preview mode or on server
-  if (isPreviewMode || typeof window === "undefined") {
+  if (isPreviewMode) {
     console.log("Skipping Firebase initialization - preview mode or server-side")
     return { app: null, db: null }
   }

@@ -27,6 +27,7 @@ export async function getWaitlistCount(): Promise<number> {
     // Try to get Firestore database
     const db = await getFirestoreDb()
 
+
     if (!db) {
       console.log("Firestore not available, using demo count")
       return 247
@@ -134,5 +135,35 @@ export async function addToWaitlist(email: string): Promise<WaitlistResponse> {
       message: "Merci ! Vous avez été ajouté à notre liste d'attente. (Mode démo - erreur Firebase)",
       count: 247,
     }
+  }
+}
+
+
+export async function getWeeklyWaitlistCount(): Promise<number> {
+  try {
+    if (isPreviewMode) {
+      return 12 // Demo count
+    }
+
+    const db = await getFirestoreDb()
+    if (!db) return 12
+
+    const { collection, getDocs, query, where, Timestamp } = await import("firebase/firestore")
+
+    const now = new Date()
+    const startOfWeek = new Date(now)
+    startOfWeek.setDate(now.getDate() - now.getDay()) // Sunday
+
+    const waitlistRef = collection(db, "waitlist")
+    const q = query(
+      waitlistRef,
+      where("timestamp", ">=", Timestamp.fromDate(startOfWeek))
+    )
+
+    const snapshot = await getDocs(q)
+    return snapshot.size
+  } catch (error) {
+    console.error("Error getting weekly waitlist count:", error)
+    return 12
   }
 }
