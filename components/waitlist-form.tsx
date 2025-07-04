@@ -7,7 +7,7 @@ import * as z from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
-import { addToWaitlist, getWaitlistCount } from "@/lib/waitlist"
+import { addToWaitlist, getWaitlistCount, getWeeklyWaitlistCount } from "@/lib/waitlist"
 import { CheckCircle, Loader2, Mail, Users, TrendingUp, AlertCircle, Info } from "lucide-react"
 
 const formSchema = z.object({
@@ -19,6 +19,7 @@ type FormData = z.infer<typeof formSchema>
 export function WaitlistForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
+  const [weeklyCount, setWeeklyCount] = useState<number | null>(null)
   const [isLoadingCount, setIsLoadingCount] = useState(true)
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | "info" | null
@@ -32,51 +33,47 @@ export function WaitlistForm() {
     },
   })
 
-  // Load waitlist count on component mount
+  // Load total + weekly waitlist count on mount
   useEffect(() => {
-    const loadCount = async () => {
+    const loadCounts = async () => {
       try {
         setIsLoadingCount(true)
-        console.log("Loading waitlist count...")
-        const count = await getWaitlistCount()
-        console.log("Loaded count:", count)
-        setWaitlistCount(count)
+        const [total, weekly] = await Promise.all([
+          getWaitlistCount(),
+          getWeeklyWaitlistCount(),
+        ])
+        setWaitlistCount(total)
+        setWeeklyCount(weekly)
       } catch (error) {
-        console.error("Error loading waitlist count:", error)
-        setWaitlistCount(247) // Fallback count
+        console.error("Error loading waitlist counts:", error)
+        setWaitlistCount(247)
+        setWeeklyCount(12)
       } finally {
         setIsLoadingCount(false)
       }
     }
-    loadCount()
+
+    loadCounts()
   }, [])
 
   const onSubmit = async (data: FormData) => {
-    console.log("Form submitted with email:", data.email)
     setIsSubmitting(true)
     setSubmitStatus({ type: null, message: "" })
 
     try {
       const result = await addToWaitlist(data.email)
-      console.log("Waitlist result:", result)
 
-      if (result.success) {
-        // Check if it's demo mode
-        const isDemoMode = result.message.includes("Mode démo") || result.message.includes("Firebase indisponible")
-        setSubmitStatus({
-          type: isDemoMode ? "info" : "success",
-          message: result.message,
-        })
-        if (result.count) {
-          setWaitlistCount(result.count)
-        }
-        form.reset()
-      } else {
-        setSubmitStatus({ type: "error", message: result.message })
-        if (result.count) {
-          setWaitlistCount(result.count)
-        }
-      }
+      const isDemoMode =
+        result.message.includes("Mode démo") ||
+        result.message.includes("Firebase indisponible")
+
+      setSubmitStatus({
+        type: result.success ? (isDemoMode ? "info" : "success") : "error",
+        message: result.message,
+      })
+
+      if (result.count) setWaitlistCount(result.count)
+      if (result.success) form.reset()
     } catch (error) {
       console.error("Form submission error:", error)
       setSubmitStatus({
@@ -127,10 +124,12 @@ export function WaitlistForm() {
               <p className="text-sm text-gray-600 font-medium">Personnes inscrites</p>
               <p className="text-3xl font-bold text-emerald-600">{waitlistCount.toLocaleString()}</p>
             </div>
-            <div className="flex items-center gap-1 text-emerald-600">
-              <TrendingUp className="w-4 w-4" />
-              <span className="text-xs font-medium">En croissance</span>
-            </div>
+            {weeklyCount !== null && (
+              <div className="flex items-center gap-1 text-emerald-600">
+                <TrendingUp className="w-4 h-4" />
+                <span className="text-xs font-medium">+{weeklyCount} cette semaine</span>
+              </div>
+            )}
           </div>
         )}
 
@@ -160,14 +159,15 @@ export function WaitlistForm() {
             <p className="text-sm text-gray-600 font-medium">Déjà inscrits</p>
             <p className="text-3xl font-bold text-emerald-600">{waitlistCount.toLocaleString()}</p>
           </div>
-          <div className="flex items-center gap-1 text-emerald-600">
-            <TrendingUp className="w-4 h-4" />
-            <span className="text-xs font-medium">+12 cette semaine</span>
-          </div>
+          {weeklyCount !== null && (
+            <div className="flex items-center gap-1 text-emerald-600">
+              <TrendingUp className="w-4 h-4" />
+              <span className="text-xs font-medium">+{weeklyCount} cette semaine</span>
+            </div>
+          )}
         </div>
       )}
 
-      {/* Loading state for counter */}
       {isLoadingCount && (
         <div className="flex items-center justify-center gap-4 bg-white/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-emerald-200 shadow-sm">
           <div className="flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-full">
