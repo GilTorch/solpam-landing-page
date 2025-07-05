@@ -397,7 +397,7 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-6 md:space-y-8 text-center">
               <div className="space-y-4 max-w-3xl">
                 <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-100 mx-auto w-fit">
-                  Lancement prévu pour 2024
+                  Lancement prévu pour 2025
                 </Badge>
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl font-heading">
                   Rejoignez la liste d'attente
@@ -565,7 +565,7 @@ export default function LandingPage() {
                 </Button>
               </div>
               <p className="text-xs md:text-sm text-emerald-100 pt-2">
-                Lancement prévu pour 2024 • Compatible iOS 12+ et Android 8+
+                Lancement prévu pour 2025 • Compatible iOS 12+ et Android 8+
               </p>
             </div>
           </div>
